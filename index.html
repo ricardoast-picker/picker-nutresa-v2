@@ -545,17 +545,90 @@
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;">
-        <div class="card-celeste">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--celeste);font-weight:800;margin-bottom:12px;">Lo que necesitamos de Nutresa</div>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
-            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>2 locales seleccionados para el piloto</li>
-            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>Credenciales 3PL (Rappi / Army) o usamos tarifas Picker</li>
-            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>Contacto técnico IT para CIESA + ALOHA</li>
-            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>Contacto operativo para reglas de cash</li>
-          </ul>
-          <div style="margin-top:12px;padding:10px 14px;background:white;border-radius:10px;border:1px solid var(--celeste-mid);">
-            <div style="font-size:11px;font-weight:800;color:var(--celeste);margin-bottom:3px;">Opción de arranque rápido</div>
-            <div style="font-size:12px;color:var(--sub);">El piloto puede correr <strong style="color:var(--text);">sin integración POS</strong> — pedidos manuales desde día 1 mientras CIESA/ALOHA se desarrolla en paralelo.</div>
+        <div class="card" style="padding:16px 18px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
+            <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--celeste);letter-spacing:.08em;">Tarifario carriers · Colombia</div>
+            <div style="font-size:9px;color:var(--muted);font-weight:600;">COP / envío · moto</div>
+          </div>
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);">
+                <th style="text-align:left;padding:3px 6px 5px 0;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Dist.</th>
+                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">Rappi</th>
+                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">Cabify</th>
+                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">MU</th>
+                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--green-text);">Pibox</th>
+                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">ARMI A</th>
+                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">ARMI B</th>
+                <th style="text-align:right;padding:3px 0 5px 3px;font-size:8px;font-weight:800;color:var(--text);">ARMI C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">0–3km</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">8.199</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">8.200</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">10.890</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">6.200</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">9.600</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.200</td>
+                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">11.850</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">4km</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">10.445</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">9.975</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">13.134</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">7.770</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">11.498</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.299</td>
+                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.225</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">5km</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.282</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">11.340</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.834</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">9.030</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.915</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">17.787</td>
+                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">18.008</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">6km</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.118</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.705</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">16.534</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">10.290</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.333</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">20.276</td>
+                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">20.790</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">7km</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.955</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.070</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">18.234</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">11.550</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.750</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">22.764</td>
+                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">23.573</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">Km+</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.836</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.365</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.700</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.260</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.418</td>
+                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">2.489</td>
+                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:600;color:var(--muted);">2.783</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top:10px;padding:8px 12px;background:var(--celeste-dim);border:1px solid var(--celeste-mid);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:10px;color:var(--celeste);font-weight:700;">+ Fee Picker</span>
+            <span style="font-size:14px;font-weight:900;color:var(--celeste);">$1,400 COP / envío</span>
           </div>
         </div>
         <div class="card-accent" style="padding:22px 24px;">
