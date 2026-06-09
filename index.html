@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Picker × Grupo Nutresa — Business Case</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      hsl(212 100% 97%);
+      --card:    hsl(0 0% 100%);
+      --card2:   hsl(214 33% 91%);
+      --border:  hsl(214 33% 91%);
+      --text:    hsl(229 35% 16%);
+      --sub:     hsl(222 18% 38%);
+      --muted:   hsl(216 30% 60%);
+      --celeste:     hsl(193 100% 45%);
+      --celeste-dim: hsl(193 100% 45% / .10);
+      --celeste-mid: hsl(193 100% 45% / .28);
+      --green:       hsl(162 100% 36%);
+      --green-dim:   hsl(162 100% 44% / .10);
+      --green-mid:   hsl(162 100% 44% / .28);
+      --green-text:  hsl(162 100% 28%);
+      --amber:    hsl(43 100% 45%);
+      --amber-bg: hsl(43 100% 67% / .13);
+      --red:      hsl(346 100% 45%);
+      --red-bg:   hsl(346 100% 63% / .09);
+      --navy:     hsl(229 35% 16%);
+    }
+
+    html, body { height: 100%; background: var(--bg); font-family: 'Montserrat', sans-serif; color: var(--text); overflow: hidden; }
+    #deck { width: 100vw; height: 100vh; position: relative; }
+
+    /* ── Slides ── */
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      padding: 52px 72px;
+      opacity: 0; transform: translateX(32px);
+      transition: opacity .38s cubic-bezier(.4,0,.2,1), transform .38s cubic-bezier(.4,0,.2,1);
+      pointer-events: none; overflow: hidden;
+      background: var(--bg);
+    }
+    .slide.active  { opacity: 1; transform: translateX(0); pointer-events: all; }
+    .slide.exit    { opacity: 0; transform: translateX(-32px); }
+
+    /* ── Fade-up animations ── */
+    .anim {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .52s cubic-bezier(.4,0,.2,1), transform .52s cubic-bezier(.4,0,.2,1);
+      transition-delay: 0s;
+    }
+    .slide.active .anim   { opacity: 1; transform: translateY(0); }
+    .slide:not(.active) .anim { transition-duration: 0s; transition-delay: 0s !important; }
+    .d1 { transition-delay: .06s; }
+    .d2 { transition-delay: .15s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .33s; }
+    .d5 { transition-delay: .42s; }
+    .d6 { transition-delay: .51s; }
+    .d7 { transition-delay: .60s; }
+
+    /* ── Nav ── */
+    #nav { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; z-index: 100; }
+    .nav-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; box-shadow: 0 2px 8px hsl(229 35% 16% / .08); }
+    .nav-btn:hover { border-color: var(--celeste); color: var(--celeste); }
+    .nav-btn:disabled { opacity: .35; cursor: default; }
+    .nav-btn svg { width: 15px; height: 15px; }
+    #indicators { display: flex; gap: 6px; align-items: center; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: all .25s; cursor: pointer; }
+    .dot.on { background: var(--celeste); width: 22px; border-radius: 3px; }
+    #slide-num { position: fixed; top: 22px; right: 28px; font-size: 11px; color: var(--muted); letter-spacing: .05em; font-weight: 600; }
+
+    /* ── Typography ── */
+    .tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--green-text); border: 1px solid var(--green-mid); background: var(--green-dim); padding: 4px 12px; border-radius: 4px; margin-bottom: 16px; }
+    .tag.blue { color: var(--celeste); border-color: var(--celeste-mid); background: var(--celeste-dim); }
+    .tag.amber { color: var(--amber); border-color: hsl(43 100% 45% / .3); background: var(--amber-bg); }
+    .tag.red { color: var(--red); border-color: hsl(346 100% 45% / .25); background: var(--red-bg); }
+
+    h1 { font-size: clamp(36px, 5vw, 66px); font-weight: 900; line-height: 1.06; color: var(--text); }
+    h2 { font-size: clamp(28px, 3.8vw, 52px); font-weight: 900; line-height: 1.1; color: var(--text); }
+    .sub { font-size: clamp(13px, 1.1vw, 15px); color: var(--sub); font-weight: 400; line-height: 1.65; }
+
+    /* ── Picker highlight ── */
+    .hl  { color: var(--celeste); }
+    .hlg { color: var(--green-text); }
+    .hlr { color: var(--red); }
+    .hla { color: var(--amber); }
+
+    /* ── Cards — more radius + shadow ── */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px 28px; box-shadow: 0 4px 24px hsl(229 35% 16% / .07), 0 1px 4px hsl(229 35% 16% / .04); }
+    .card-sm { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; box-shadow: 0 2px 12px hsl(229 35% 16% / .06); }
+    .card-accent { background: var(--green-dim); border: 1px solid var(--green-mid); border-radius: 20px; padding: 24px 28px; box-shadow: 0 4px 20px hsl(162 100% 36% / .08); }
+    .card-celeste { background: var(--celeste-dim); border: 1px solid var(--celeste-mid); border-radius: 20px; padding: 24px 28px; }
+
+    /* ── Mega numbers ── */
+    .mega    { font-size: clamp(44px, 6vw, 80px); font-weight: 900; line-height: 1; letter-spacing: -.02em; }
+    .mega-md { font-size: clamp(32px, 4vw, 56px); font-weight: 900; line-height: 1; letter-spacing: -.01em; }
+    .mega-sm { font-size: clamp(24px, 3vw, 40px); font-weight: 900; line-height: 1; }
+
+    /* ── Comparison block ── */
+    .cmp { display: grid; grid-template-columns: 1fr 1fr; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 24px hsl(229 35% 16% / .07); }
+    .cmp-bad  { background: hsl(346 100% 45% / .04); padding: 24px 28px; border-right: 1px solid var(--border); }
+    .cmp-good { background: var(--green-dim); padding: 24px 28px; }
+    .cmp-lbl  { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 16px; }
+
+    /* ── Grids ── */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; }
+    .grid4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; width: 100%; }
+
+    /* ── Stat ── */
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px; display: flex; flex-direction: column; gap: 5px; box-shadow: 0 3px 16px hsl(229 35% 16% / .06); }
+    .stat .val { font-size: clamp(28px, 3.5vw, 46px); font-weight: 900; color: var(--text); letter-spacing: -.01em; }
+    .stat .val.g { color: var(--green-text); }
+    .stat .val.b { color: var(--celeste); }
+    .stat .val.a { color: var(--amber); }
+    .stat .val.r { color: var(--red); }
+    .stat .lbl { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; }
+    .stat .desc { font-size: 12px; color: var(--sub); margin-top: 2px; }
+
+    /* ── Misc ── */
+    .divider { width: 100%; height: 1px; background: var(--border); margin: 12px 0; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; background: var(--green-dim); color: var(--green-text); border: 1px solid var(--green-mid); }
+    .pill.b { background: var(--celeste-dim); color: var(--celeste); border-color: var(--celeste-mid); }
+    .step-num { min-width: 28px; height: 28px; border-radius: 50%; background: var(--celeste-dim); border: 1px solid var(--celeste-mid); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: var(--celeste); }
+    .picker-mark { font-size: 13px; font-weight: 800; letter-spacing: .07em; color: var(--celeste); }
+    .content { position: relative; z-index: 1; width: 100%; max-width: 1100px; }
+
+    /* ── Check icon ── */
+    .chk { width: 24px; height: 24px; min-width: 24px; border-radius: 50%; background: var(--green-dim); border: 1.5px solid var(--green-mid); display: flex; align-items: center; justify-content: center; }
+
+    @media (max-width: 768px) { .slide { padding: 28px 22px; } .grid4 { grid-template-columns: 1fr 1fr; } .grid3 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="deck">
+
+<!-- ══════ S1 · PORTADA ══════ -->
+<div class="slide active" id="s1">
+  <div class="content" style="display:flex;flex-direction:column;gap:30px;max-width:860px;">
+    <div class="anim d1" style="display:flex;align-items:center;gap:10px;">
+      <span class="picker-mark">PICKER</span>
+      <span style="color:var(--border);font-size:16px;font-weight:300;">×</span>
+      <span style="font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.06em;">GRUPO NUTRESA</span>
+    </div>
+    <div class="anim d2">
+      <h1>Grupo Nutresa convierte<br/>su flota en <span class="hl">ventaja<br/>competitiva.</span></h1>
+      <div style="width:80px;height:5px;background:var(--celeste);border-radius:3px;margin-top:24px;"></div>
+    </div>
+    <p class="sub anim d3" style="max-width:480px;font-size:15px;">Papa John's · El Corral · 101 locales · 34,000 pedidos/mes —<br/>el business case para orquestar el canal D2C con Picker.</p>
+    <div class="anim d4" style="display:flex;gap:36px;padding-top:4px;">
+      <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px;">Para</div><div style="font-size:14px;font-weight:700;">Patricia Torres · Equipo Nutresa</div></div>
+      <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px;">Actualizado</div><div style="font-size:14px;font-weight:700;">Junio 2026 · 2ª sesión</div></div>
+      <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px;">Presentado por</div><div style="font-size:14px;font-weight:700;">Ricardo Astorga · Picker Express</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S2 · DATOS ══════ -->
+<div class="slide" id="s2">
+  <div class="content" style="display:flex;flex-direction:column;gap:26px;">
+    <div>
+      <div class="tag blue anim d1">Datos confirmados</div>
+      <h2 class="anim d2">La operación de<br/>Grupo Nutresa — en números.</h2>
+    </div>
+    <div class="grid4 anim d3">
+      <div class="stat"><div class="lbl">Locales activos</div><div class="val b">101</div><div class="desc">50 Papa John's · 51 El Corral</div></div>
+      <div class="stat"><div class="lbl">Pedidos D2C / mes</div><div class="val">34,000</div><div class="desc">Canal propio confirmado</div></div>
+      <div class="stat"><div class="lbl">Ticket promedio</div><div class="val">$70,000</div><div class="desc">COP · Papa John's</div></div>
+      <div class="stat"><div class="lbl">Ventas canal propio / mes</div><div class="val b">$2,380M</div><div class="desc">COP · 34K × $70K</div></div>
+    </div>
+    <div class="grid3 anim d4">
+      <div class="card-sm">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:10px;">Equipo de reparto</div>
+        <div style="display:flex;gap:20px;">
+          <div><div class="mega-sm" style="color:var(--text);">170</div><div style="font-size:12px;color:var(--sub);">repartidores</div></div>
+          <div style="width:1px;background:var(--border);"></div>
+          <div><div class="mega-sm" style="color:var(--text);">35</div><div style="font-size:12px;color:var(--sub);">call center</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--sub);margin-top:8px;">$3,500,000 COP / persona / mes</div>
+      </div>
+      <div class="card-sm">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:10px;">Costo operativo hoy</div>
+        <div class="mega-sm hla">$21,103</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP por envío</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px;">(nómina 170 riders + 35 call center ÷ 34K envíos)</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">Margen neto: <strong style="color:var(--text);">39.9%</strong></div>
+      </div>
+      <div class="card-sm">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:10px;">Pagos &amp; tecnología</div>
+        <div style="display:flex;gap:16px;align-items:center;margin-bottom:10px;">
+          <div><div class="mega-sm hla">50%</div><div style="font-size:12px;color:var(--sub);">pedidos en efectivo</div></div>
+          <div style="width:1px;background:var(--border);align-self:stretch;"></div>
+          <div><div style="font-size:15px;font-weight:800;color:var(--text);">CIESA · ALOHA</div><div style="font-size:12px;color:var(--sub);">sistemas POS</div></div>
+        </div>
+        <div style="font-size:11px;color:var(--sub);padding:8px 12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">Integración API ~1 semana · Sandbox disponible</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S3 · DOLORES ══════ -->
+<div class="slide" id="s3">
+  <div class="content" style="display:flex;flex-direction:column;gap:22px;">
+    <div>
+      <div class="tag red anim d1">Diagnóstico</div>
+      <h2 class="anim d2">Cuatro dolores que frenan<br/>el canal D2C de Nutresa.</h2>
+    </div>
+    <div class="grid2 anim d3" style="gap:14px;">
+      <div class="card" style="border-top:3px solid var(--red);padding:20px 24px;">
+        <div style="font-size:24px;margin-bottom:8px;">💸</div>
+        <div style="font-weight:800;font-size:14px;margin-bottom:6px;">Costo fijo sin retorno</div>
+        <p class="sub" style="font-size:12px;">170 riders a nómina · 8 envíos/día · asignación 100% manual.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--red-bg);border-radius:10px;display:flex;align-items:baseline;gap:8px;">
+          <span class="mega-sm hlr">$717.5M</span>
+          <span style="font-size:11px;color:var(--red);font-weight:600;">COP/mes en nómina fija · sin importar el volumen</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--amber);padding:20px 24px;">
+        <div style="font-size:24px;margin-bottom:8px;">⏱️</div>
+        <div style="font-weight:800;font-size:14px;margin-bottom:6px;">Tiempos que alejan clientes</div>
+        <p class="sub" style="font-size:12px;">60 min entre semana · 90 min fin de semana. Call center sin visibilidad en tiempo real.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--amber-bg);border-radius:10px;display:flex;align-items:baseline;gap:8px;">
+          <span class="mega-sm hla">70%</span>
+          <span style="font-size:11px;color:var(--amber);font-weight:600;">de clientes que reciben tarde no vuelven a pedir</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--celeste);padding:20px 24px;">
+        <div style="font-size:24px;margin-bottom:8px;">🔒</div>
+        <div style="font-weight:800;font-size:14px;margin-bottom:6px;">Expansión bloqueada</div>
+        <p class="sub" style="font-size:12px;">Nuevo local = inversión previa en riders fijos. Sin flota compartida, abrir es arriesgado.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--celeste-dim);border-radius:10px;display:flex;align-items:baseline;gap:8px;">
+          <span class="mega-sm hl">7 marcas</span>
+          <span style="font-size:11px;color:var(--celeste);font-weight:600;">sin una sola flota compartida — meta "Domiciliarios Nutresa" bloqueada</span>
+        </div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--navy);padding:20px 24px;">
+        <div style="font-size:24px;margin-bottom:8px;">💵</div>
+        <div style="font-weight:800;font-size:14px;margin-bottom:6px;">Efectivo sin trazabilidad</div>
+        <p class="sub" style="font-size:12px;">Rider regresa con el dinero o el datáfono en cada orden. Cierre manual, caja impredecible.</p>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--card2);border-radius:10px;display:flex;align-items:baseline;gap:8px;">
+          <span class="mega-sm" style="color:var(--sub);">50%</span>
+          <span style="font-size:11px;color:var(--sub);font-weight:600;">de pedidos en efectivo sin conciliación automática</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S4 · SOLUCIÓN ══════ -->
+<div class="slide" id="s4">
+  <div class="content" style="display:flex;flex-direction:column;gap:26px;">
+    <div>
+      <div class="tag blue anim d1">La solución</div>
+      <h2 class="anim d2">Picker: el pedido correcto<br/>al rider correcto al <span class="hlg">costo correcto.</span></h2>
+      <p class="sub anim d3" style="margin-top:8px;max-width:580px;">No reemplaza a los repartidores de Nutresa. Los maximiza.</p>
+    </div>
+    <div class="anim d3" style="display:flex;align-items:center;gap:12px;width:100%;">
+      <div class="card" style="flex:1;text-align:center;padding:20px 14px;">
+        <div style="font-size:26px;margin-bottom:6px;">📱</div>
+        <div style="font-weight:700;font-size:13px;margin-bottom:3px;">Pedido entra</div>
+        <div class="sub" style="font-size:11px;">App D2C de Nutresa</div>
+      </div>
+      <div style="font-size:18px;color:var(--border);">→</div>
+      <div class="card-celeste" style="flex:1.4;text-align:center;padding:20px 14px;">
+        <div style="font-size:26px;margin-bottom:6px;">⚡</div>
+        <div style="font-weight:800;font-size:13px;color:var(--celeste);margin-bottom:3px;">Picker orquesta</div>
+        <div class="sub" style="font-size:11px;">¿Rider propio disponible y cerca? ¿O más eficiente 3PL?</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:14px;color:var(--border);transform:rotate(-30deg);">→</div>
+        <div style="font-size:14px;color:var(--border);transform:rotate(30deg);">→</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;flex:1;">
+        <div class="card-sm" style="text-align:center;padding:12px;">
+          <div style="font-size:16px;margin-bottom:2px;">🛵</div>
+          <div style="font-weight:700;font-size:11px;">Flota propia Nutresa</div>
+          <div style="font-size:10px;color:var(--sub);">Prioridad &lt;3km</div>
+        </div>
+        <div class="card-sm" style="text-align:center;padding:12px;">
+          <div style="font-size:16px;margin-bottom:2px;">🚗</div>
+          <div style="font-weight:700;font-size:11px;">Rappi · Army · Cabify</div>
+          <div style="font-size:10px;color:var(--sub);">Overflow &gt;3km</div>
+        </div>
+      </div>
+      <div style="font-size:18px;color:var(--border);">→</div>
+      <div class="card" style="flex:1;text-align:center;padding:20px 14px;">
+        <div style="font-size:26px;margin-bottom:6px;">✅</div>
+        <div style="font-weight:700;font-size:13px;margin-bottom:3px;">Entregado</div>
+        <div class="sub" style="font-size:11px;">Tracking bajo marca Nutresa</div>
+      </div>
+    </div>
+    <div class="grid4 anim d4">
+      <div style="display:flex;gap:9px;align-items:flex-start;">
+        <div class="step-num">1</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Dashboard único · 101 locales</div><div class="sub" style="font-size:11px;">Todas las marcas en tiempo real.</div></div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;">
+        <div class="step-num">2</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">App + tracking brandeados</div><div class="sub" style="font-size:11px;">WhatsApp y mapa con tu marca.</div></div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;">
+        <div class="step-num">3</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Flota compartida multi-marca</div><div class="sub" style="font-size:11px;">PJ + El Corral · batching 3 envíos.</div></div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;">
+        <div class="step-num">4</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Cash routing automático</div><div class="sub" style="font-size:11px;">Efectivo → flota propia o Army.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S5 · VALIDADO ══════ -->
+<div class="slide" id="s5">
+  <div class="content" style="display:flex;flex-direction:column;gap:26px;">
+    <div>
+      <div class="tag anim d1">Validado en la sesión</div>
+      <h2 class="anim d2">Sus preguntas técnicas.<br/>Todas resueltas.</h2>
+    </div>
+    <div class="grid2 anim d3" style="gap:16px;">
+      <div class="card" style="border-left:3px solid var(--green);padding:22px 26px;">
+        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Proveedores &amp; tarifas</div>
+        <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">5 proveedores activos en Colombia</div>
+        <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">Rappi · Cabify · Mensajeros Urbanos · Peebox · Army</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--green-dim);border-radius:10px;border:1px solid var(--green-mid);">
+          <span class="mega-sm hlg">$1,400</span>
+          <span style="font-size:13px;color:var(--green-text);font-weight:700;">COP/envío — mismo precio festivos, picos y fines de semana.</span>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--green);padding:22px 26px;">
+        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Operación multi-marca</div>
+        <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">Un rider = Papa John's + El Corral</div>
+        <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">Batching hasta 3 pedidos · asignación automática por proximidad</div>
+        <div style="padding:12px 16px;background:var(--green-dim);border-radius:10px;border:1px solid var(--green-mid);font-size:13px;color:var(--green-text);font-weight:700;">Si un rider lo toma → el sistema cancela el resto. Sin doble asignación.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--celeste);padding:22px 26px;">
+        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Efectivo &amp; integración</div>
+        <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">Cash siempre a flota propia o Army</div>
+        <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">Pago inmediato en punto de entrega · sin semanas de espera</div>
+        <div style="padding:12px 16px;background:var(--celeste-dim);border-radius:10px;border:1px solid var(--celeste-mid);font-size:13px;color:var(--celeste);font-weight:700;">CIESA + ALOHA: integración API en ~1 semana · sandbox disponible</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--celeste);padding:22px 26px;">
+        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Visibilidad &amp; marca</div>
+        <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">App + tracking 100% con tu marca</div>
+        <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">WhatsApp · mapa en vivo · bajo nombre Papa John's / El Corral</div>
+        <div style="padding:12px 16px;background:var(--celeste-dim);border-radius:10px;border:1px solid var(--celeste-mid);font-size:13px;color:var(--celeste);font-weight:700;">API disponible para conectar al BI interno de Nutresa</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S6 · PILAR 1 ══════ -->
+<div class="slide" id="s6">
+  <div class="content" style="display:flex;flex-direction:column;gap:22px;">
+    <div>
+      <div class="tag blue anim d1">Pilar 1 · Ahorro Operativo</div>
+      <h2 class="anim d2">Cada envío cuesta<br/><span class="hlg">$5,000 COP menos</span> con Picker.</h2>
+    </div>
+    <div class="cmp anim d3">
+      <div class="cmp-bad">
+        <div class="cmp-lbl hlr">Sin Picker — hoy</div>
+        <div style="display:flex;gap:28px;margin-bottom:16px;">
+          <div><div class="mega hlr">$21,103</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">COP / envío</div></div>
+          <div style="width:1px;background:var(--border);"></div>
+          <div><div class="mega hlr">39.9%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">margen neto</div></div>
+        </div>
+        <div style="font-size:13px;color:var(--sub);">170 riders a nómina · 8 envíos/día · asignación manual</div>
+      </div>
+      <div class="cmp-good">
+        <div class="cmp-lbl hlg">Con Picker — escenario 75%</div>
+        <div style="display:flex;gap:28px;margin-bottom:16px;">
+          <div><div class="mega hlg">$16,225</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">COP / envío</div></div>
+          <div style="width:1px;background:var(--green-mid);"></div>
+          <div><div class="mega hlg">46.8%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">margen neto</div></div>
+        </div>
+        <div style="font-size:13px;color:var(--sub);">~110 riders · 12 envíos/día · asignación automática</div>
+      </div>
+    </div>
+    <div class="grid2 anim d4" style="gap:14px;">
+      <div style="text-align:center;padding:20px 24px;background:white;border-radius:16px;border:1px solid var(--green-mid);box-shadow:0 3px 16px hsl(162 100% 36% / .08);">
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">50% de envíos con Picker</div>
+        <div class="mega hlg">+$104.9M</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP / mes adicional · <strong>$1,258M / año</strong></div>
+        <div style="font-size:14px;font-weight:800;color:var(--green-text);margin-top:8px;">ROI 2.2×</div>
+      </div>
+      <div style="text-align:center;padding:20px 24px;background:white;border-radius:16px;border:2px solid var(--green-mid);box-shadow:0 4px 20px hsl(162 100% 36% / .12);">
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">75% de envíos con Picker</div>
+        <div class="mega hlg">+$165.8M</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP / mes adicional · <strong>$1,989M / año</strong></div>
+        <div style="font-size:14px;font-weight:800;color:var(--green-text);margin-top:8px;">ROI 3.5×</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S7 · PILAR 2 ══════ -->
+<div class="slide" id="s7">
+  <div class="content" style="display:flex;flex-direction:column;gap:22px;">
+    <div>
+      <div class="tag blue anim d1">Pilar 2 · Recurrencia</div>
+      <h2 class="anim d2">Entregar a tiempo convierte<br/>clientes en <span class="hlg">compradores recurrentes.</span></h2>
+    </div>
+    <div class="cmp anim d3">
+      <div class="cmp-bad">
+        <div class="cmp-lbl hlr">Sin Picker — hoy</div>
+        <div style="display:flex;gap:28px;margin-bottom:16px;">
+          <div><div class="mega hlr">90 min</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">tiempo promesa fin de semana</div></div>
+          <div style="width:1px;background:var(--border);"></div>
+          <div><div class="mega hlr">70%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">clientes tarde no vuelven</div></div>
+        </div>
+        <div style="font-size:13px;color:var(--sub);">Sin visibilidad en tiempo real · call center reactivo</div>
+      </div>
+      <div class="cmp-good">
+        <div class="cmp-lbl hlg">Con Picker</div>
+        <div style="display:flex;gap:28px;margin-bottom:16px;">
+          <div><div class="mega hlg">43 min</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">promedio Colombia</div></div>
+          <div style="width:1px;background:var(--green-mid);"></div>
+          <div><div class="mega hlg">+25%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">recurrencia estimada</div></div>
+        </div>
+        <div style="font-size:13px;color:var(--sub);">Rider asignado en el momento exacto que el local termina de preparar</div>
+      </div>
+    </div>
+    <div class="grid2 anim d4" style="gap:14px;">
+      <div style="text-align:center;padding:20px 24px;background:white;border-radius:16px;border:1px solid var(--green-mid);box-shadow:0 3px 16px hsl(162 100% 36% / .08);">
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Pedidos adicionales / mes</div>
+        <div class="mega hlg">+8,500</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:6px;">hipótesis conservadora +25% recurrencia</div>
+      </div>
+      <div style="text-align:center;padding:20px 24px;background:white;border-radius:16px;border:2px solid var(--green-mid);box-shadow:0 4px 20px hsl(162 100% 36% / .12);">
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Revenue adicional / mes</div>
+        <div class="mega hlg">+$595M</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:6px;">COP · <strong>$0 en costo de adquisición</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S8 · PILAR 3 ══════ -->
+<div class="slide" id="s8">
+  <div class="content" style="display:flex;flex-direction:column;gap:22px;">
+    <div>
+      <div class="tag blue anim d1">Pilar 3 · Expansión</div>
+      <h2 class="anim d2">Abrir nuevos locales<br/><span class="hl">sin invertir en flota</span> desde el día 1.</h2>
+    </div>
+    <div class="cmp anim d3">
+      <div class="cmp-bad">
+        <div class="cmp-lbl hlr">Sin Picker — hoy</div>
+        <div style="margin-bottom:14px;"><div class="mega-md hlr">Nuevo local</div><div style="font-size:15px;font-weight:700;color:var(--red);margin-top:4px;">= inversión previa en riders fijos</div></div>
+        <div style="font-size:13px;color:var(--sub);">Locales sin activar en D2C · costo fijo antes de tener un solo pedido</div>
+        <div style="margin-top:12px;font-size:13px;color:var(--sub);">Papa John's y El Corral con flotas separadas · riders ociosos en horas bajas</div>
+      </div>
+      <div class="cmp-good">
+        <div class="cmp-lbl hlg">Con Picker</div>
+        <div style="margin-bottom:14px;"><div class="mega-md hlg">Prendes el local.</div><div style="font-size:15px;font-weight:700;color:var(--green-text);margin-top:4px;">Picker lo cubre desde el día 1 con 3PL.</div></div>
+        <div style="font-size:13px;color:var(--sub);">Si funciona → agregas riders propios · si no → apagas sin penalización</div>
+        <div style="margin-top:12px;font-size:13px;font-weight:700;color:var(--green-text);">7 marcas · 1 sola flota compartida — "Domiciliarios Nutresa"</div>
+      </div>
+    </div>
+    <div class="grid3 anim d4" style="gap:14px;">
+      <div style="text-align:center;padding:18px;background:white;border-radius:16px;border:1px solid var(--celeste-mid);box-shadow:0 3px 16px hsl(193 100% 45% / .07);">
+        <div class="mega-md hl">+10</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">locales activables sin flota previa</div>
+      </div>
+      <div style="text-align:center;padding:18px;background:white;border-radius:16px;border:1px solid var(--green-mid);box-shadow:0 3px 16px hsl(162 100% 36% / .07);">
+        <div class="mega-md hlg">+5,000</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">pedidos potenciales / mes</div>
+      </div>
+      <div style="text-align:center;padding:18px;background:white;border-radius:16px;border:1px solid var(--green-mid);box-shadow:0 3px 16px hsl(162 100% 36% / .07);">
+        <div class="mega-md hlg">-30%</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">costo/envío con flota compartida</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S9 · RESUMEN ROI ══════ -->
+<div class="slide" id="s9">
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;">
+    <div class="anim d1">
+      <div class="tag" style="margin:0 auto 16px;">Tres palancas · Un solo fee</div>
+      <h2>Todo esto por <span class="hlg">$1,400 COP / envío.</span></h2>
+      <p class="sub" style="margin-top:10px;max-width:560px;">Fee Picker: <strong>$47.6M COP/mes</strong> sobre 34,000 envíos. Los 3PL van a las tarifas que ya tiene Nutresa negociadas.</p>
+    </div>
+    <div class="grid3 anim d2" style="max-width:900px;gap:18px;">
+      <div class="card" style="border-top:4px solid var(--celeste);text-align:center;padding:28px 20px;">
+        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;">Ahorro Operativo</div>
+        <div class="mega hlg">+$165.8M</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:8px;">COP / mes</div>
+        <div class="divider"></div>
+        <div style="font-size:13px;color:var(--sub);">Margen: <span class="hla">39.9%</span> → <span class="hlg">46.8%</span></div>
+        <div style="font-size:13px;color:var(--sub);">Costo/envío: <span class="hla">$21K</span> → <span class="hlg">$16K</span></div>
+        <div style="margin-top:12px;" class="pill">ROI 3.5×</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--celeste);text-align:center;padding:28px 20px;">
+        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;">Recurrencia</div>
+        <div class="mega hlg">+$595M</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:8px;">COP revenue potencial / mes</div>
+        <div class="divider"></div>
+        <div style="font-size:13px;color:var(--sub);">+8,500 pedidos adicionales</div>
+        <div style="font-size:13px;color:var(--sub);">Tiempo: <span class="hla">90 min</span> → <span class="hlg">43 min</span></div>
+        <div style="margin-top:12px;" class="pill">$0 costo adquisición</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--celeste);text-align:center;padding:28px 20px;">
+        <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;">Expansión · Flota Nutresa</div>
+        <div class="mega hlg">+5,000</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:8px;">pedidos potenciales / mes</div>
+        <div class="divider"></div>
+        <div style="font-size:13px;color:var(--sub);">+10 locales activables</div>
+        <div style="font-size:13px;color:var(--sub);">7 marcas en <span class="hlg">1 sola flota</span></div>
+        <div style="margin-top:12px;" class="pill">Sin flota previa</div>
+      </div>
+    </div>
+    <div class="anim d3" style="padding:16px 32px;background:var(--green-dim);border:1px solid var(--green-mid);border-radius:14px;max-width:700px;">
+      <span style="font-size:15px;font-weight:700;color:var(--green-text);">Escenario conservador (solo Pilar 1 · 75% Picker): <strong style="font-size:17px;">+$1,989M COP / año</strong> · ROI 3.5×</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S10 · PRÓXIMOS PASOS ══════ -->
+<div class="slide" id="s10">
+  <div class="content" style="display:flex;flex-direction:column;gap:24px;">
+    <div>
+      <div class="tag blue anim d1">Próximos pasos</div>
+      <h2 class="anim d2">Piloto en 2 locales.<br/><span class="hlg">Resultados en 2–3 semanas.</span></h2>
+      <p class="sub anim d3" style="margin-top:8px;max-width:540px;">1 Papa John's + 1 El Corral · Sin compromiso de volumen · Arranca manual si IT no está listo.</p>
+    </div>
+    <div class="grid2 anim d4" style="gap:18px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">1</div>
+          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Setup del piloto</div><div class="sub" style="font-size:12px;">Picker conecta 2 locales · configuración de reglas · riders en app.</div></div>
+        </div>
+        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">2</div>
+          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Entrenamiento — 1 día</div><div class="sub" style="font-size:12px;">Repartidores y coordinadores de los 2 locales piloto.</div></div>
+        </div>
+        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">3</div>
+          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Piloto en vivo — 2–3 semanas</div><div class="sub" style="font-size:12px;">Picker mide costo/envío, SLA y eficiencia de flota.</div></div>
+        </div>
+        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">4</div>
+          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Revisión con equipo Nutresa</div><div class="sub" style="font-size:12px;">Validar modelo vs. realidad → despliegue a 101 locales.</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="card-celeste">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--celeste);font-weight:800;margin-bottom:12px;">Lo que necesitamos de Nutresa</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>2 locales seleccionados para el piloto</li>
+            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>Credenciales 3PL (Rappi / Army) o usamos tarifas Picker</li>
+            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>Contacto técnico IT para CIESA + ALOHA</li>
+            <li style="display:flex;gap:8px;font-size:13px;font-weight:500;"><span style="color:var(--celeste);font-weight:800;">→</span>Contacto operativo para reglas de cash</li>
+          </ul>
+          <div style="margin-top:12px;padding:10px 14px;background:white;border-radius:10px;border:1px solid var(--celeste-mid);">
+            <div style="font-size:11px;font-weight:800;color:var(--celeste);margin-bottom:3px;">Opción de arranque rápido</div>
+            <div style="font-size:12px;color:var(--sub);">El piloto puede correr <strong style="color:var(--text);">sin integración POS</strong> — pedidos manuales desde día 1 mientras CIESA/ALOHA se desarrolla en paralelo.</div>
+          </div>
+        </div>
+        <div class="card-accent" style="padding:22px 24px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--green-text);font-weight:800;margin-bottom:14px;">Propuesta comercial</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+            <div style="flex:1;text-align:center;padding:14px;background:white;border-radius:12px;border:1px solid var(--green-mid);">
+              <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Fee por envío</div>
+              <div class="mega-md hlg">$1,400</div>
+              <div style="font-size:12px;color:var(--sub);margin-top:4px;">COP · igual festivos y picos</div>
+            </div>
+            <div style="flex:1;text-align:center;padding:14px;background:white;border-radius:12px;border:1px solid var(--green-mid);">
+              <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Fee mensual / local</div>
+              <div style="font-size:20px;font-weight:900;text-decoration:line-through;color:var(--muted);">$200,000</div>
+              <div style="font-size:15px;font-weight:800;color:var(--green-text);margin-top:2px;">✓ $0 — eliminado</div>
+            </div>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);padding:10px 14px;background:white;border-radius:10px;border:1px solid var(--green-mid);">→ Piloto <strong>2–3 semanas</strong> · solo 2 locales · sin compromiso de volumen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ S11 · CIERRE ══════ -->
+<div class="slide" id="s11">
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;max-width:760px;margin:0 auto;">
+    <div class="anim d1" style="display:flex;align-items:center;gap:10px;">
+      <span class="picker-mark">PICKER</span>
+      <span style="color:var(--border);font-size:16px;">×</span>
+      <span style="font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.06em;">GRUPO NUTRESA</span>
+    </div>
+    <div class="anim d2">
+      <h1 style="font-size:clamp(34px,5vw,58px);">La flota de Nutresa,<br/><span class="hl">más eficiente.</span><br/><span class="hlg">Más rentable.</span></h1>
+      <div style="width:80px;height:5px;background:var(--celeste);border-radius:3px;margin:22px auto 0;"></div>
+    </div>
+    <div class="grid3 anim d3" style="max-width:640px;gap:14px;">
+      <div class="card" style="text-align:center;padding:22px 16px;">
+        <div class="mega-md hlg">$1,989M</div>
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:8px;">COP / año · 75% Picker</div>
+      </div>
+      <div class="card" style="text-align:center;padding:22px 16px;">
+        <div class="mega-md hlg">3.5×</div>
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:8px;">ROI sobre fee Picker</div>
+      </div>
+      <div class="card" style="text-align:center;padding:22px 16px;">
+        <div class="mega-md hl">2 sem.</div>
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:8px;">Para ver resultados</div>
+      </div>
+    </div>
+    <div class="anim d4">
+      <div style="font-size:14px;color:var(--sub);">Ricardo Astorga · Picker Express</div>
+      <div style="font-size:14px;color:var(--muted);margin-top:2px;">ricardoast@pickerexpress.com</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /#deck -->
+
+<div id="slide-num">1 / 11</div>
+
+<div id="nav">
+  <button class="nav-btn" id="prev" onclick="move(-1)" disabled>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div id="indicators"></div>
+  <button class="nav-btn" id="next" onclick="move(1)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script>
+  const TOTAL = 11;
+  let current = 0;
+
+  const allSlides = () => document.querySelectorAll('.slide');
+  const dots = () => document.querySelectorAll('.dot');
+
+  const ind = document.getElementById('indicators');
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.onclick = () => goTo(i);
+    ind.appendChild(d);
+  }
+
+  function goTo(n) {
+    const sl = allSlides();
+    sl[current].classList.remove('active');
+    sl[current].classList.add('exit');
+    const prev = current;
+    setTimeout(() => sl[prev].classList.remove('exit'), 400);
+    current = n;
+    sl[current].classList.add('active');
+    dots().forEach((d, i) => d.className = 'dot' + (i === current ? ' on' : ''));
+    document.getElementById('prev').disabled = current === 0;
+    document.getElementById('next').disabled = current === TOTAL - 1;
+    document.getElementById('slide-num').textContent = (current + 1) + ' / ' + TOTAL;
+  }
+
+  function move(dir) {
+    const n = current + dir;
+    if (n >= 0 && n < TOTAL) goTo(n);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') move(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   move(-1);
+  });
+</script>
+</body>
+</html>
