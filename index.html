@@ -83,7 +83,7 @@
 
     h1 { font-size: clamp(36px, 5vw, 66px); font-weight: 900; line-height: 1.06; color: var(--text); }
     h2 { font-size: clamp(28px, 3.8vw, 52px); font-weight: 900; line-height: 1.1; color: var(--text); }
-    .sub { font-size: clamp(13px, 1.1vw, 15px); color: var(--sub); font-weight: 400; line-height: 1.65; }
+    .sub { font-size: clamp(14px, 1.3vw, 16px); color: var(--sub); font-weight: 400; line-height: 1.65; }
 
     /* ── Picker highlight ── */
     .hl  { color: var(--celeste); }
@@ -154,8 +154,7 @@
     </div>
     <p class="sub anim d3" style="max-width:480px;font-size:15px;">Papa Johns · El Corral · 101 locales · 34,000 pedidos/mes —<br/>el business case para orquestar el canal propio de domicilios con Picker.</p>
     <div class="anim d4" style="display:flex;gap:36px;padding-top:4px;">
-      <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px;">Para</div><div style="font-size:14px;font-weight:700;">Patricia Torres · Equipo Nutresa</div></div>
-      <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px;">Actualizado</div><div style="font-size:14px;font-weight:700;">Junio 2026 · 2ª sesión</div></div>
+      <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px;">Para</div><div style="font-size:14px;font-weight:700;">Equipo Nutresa · Colombia</div></div>
       <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px;">Presentado por</div><div style="font-size:14px;font-weight:700;">Ricardo Astorga · Picker Express</div></div>
     </div>
   </div>
@@ -189,7 +188,7 @@
         <div class="mega-sm hla">$21,103</div>
         <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP por envío</div>
         <div style="font-size:11px;color:var(--muted);margin-top:2px;">(nómina 170 riders + 35 call center ÷ 34K envíos)</div>
-        <div style="font-size:12px;color:var(--sub);margin-top:6px;">Margen neto: <strong style="color:var(--text);">42.9%</strong></div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">Ganancia sobre ventas: <strong style="color:var(--text);">42.9%</strong></div>
       </div>
       <div class="card-sm">
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:10px;">Pagos &amp; tecnología</div>
@@ -215,8 +214,12 @@
       <div class="card" style="border-top:3px solid var(--red);padding:20px 24px;">
         <div style="font-size:24px;margin-bottom:8px;">💸</div>
         <div style="font-weight:800;font-size:14px;margin-bottom:6px;">Costo fijo sin retorno</div>
-        <p class="sub" style="font-size:12px;">170 riders a nómina · 8 envíos/día · asignación 100% manual.</p>
-        <div style="margin-top:12px;padding:10px 14px;background:var(--red-bg);border-radius:10px;display:flex;align-items:baseline;gap:8px;">
+        <p class="sub" style="font-size:13px;">170 riders a nómina · asignación 100% manual.</p>
+        <div style="margin-top:8px;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:36px;font-weight:900;color:var(--red);line-height:1;">8</span>
+          <div><div style="font-size:13px;font-weight:800;color:var(--red);">envíos/día por rider</div><div style="font-size:11px;font-weight:700;background:var(--red-bg);color:var(--red);padding:2px 9px;border-radius:4px;display:inline-block;margin-top:3px;">⚠ BAJA eficiencia</div></div>
+        </div>
+        <div style="margin-top:10px;padding:10px 14px;background:var(--red-bg);border-radius:10px;display:flex;align-items:baseline;gap:8px;">
           <span class="mega-sm hlr">$717.5M</span>
           <span style="font-size:11px;color:var(--red);font-weight:600;">COP/mes en nómina fija · sin importar el volumen</span>
         </div>
@@ -234,9 +237,9 @@
         <div style="font-size:24px;margin-bottom:8px;">🔒</div>
         <div style="font-weight:800;font-size:14px;margin-bottom:6px;">Expansión bloqueada</div>
         <p class="sub" style="font-size:12px;">Nuevo local = inversión previa en riders fijos. Sin flota compartida, abrir es arriesgado.</p>
-        <div style="margin-top:12px;padding:10px 14px;background:var(--celeste-dim);border-radius:10px;display:flex;align-items:baseline;gap:8px;">
-          <span class="mega-sm hl">7 marcas</span>
-          <span style="font-size:11px;color:var(--celeste);font-weight:600;">sin una sola flota compartida — meta "Domiciliarios Nutresa" bloqueada</span>
+        <div style="margin-top:12px;padding:10px 14px;background:var(--celeste-dim);border-radius:10px;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;">
+          <span style="font-size:clamp(20px,2.2vw,30px);font-weight:900;color:var(--celeste);white-space:nowrap;flex-shrink:0;">7 marcas</span>
+          <span style="font-size:12px;color:var(--celeste);font-weight:600;">sin flota compartida — meta "Domiciliarios Nutresa" bloqueada</span>
         </div>
       </div>
       <div class="card" style="border-top:3px solid var(--navy);padding:20px 24px;">
@@ -261,56 +264,56 @@
       <p class="sub anim d3" style="margin-top:8px;max-width:580px;">No reemplaza a los repartidores de Nutresa. Los maximiza.</p>
     </div>
     <div class="anim d3" style="display:flex;align-items:center;gap:12px;width:100%;">
-      <div class="card" style="flex:1;text-align:center;padding:20px 14px;">
-        <div style="font-size:26px;margin-bottom:6px;">📱</div>
-        <div style="font-weight:700;font-size:13px;margin-bottom:3px;">Pedido entra</div>
-        <div class="sub" style="font-size:11px;">Canal de domicilios de Nutresa</div>
+      <div class="card" style="flex:1;text-align:center;padding:22px 16px;">
+        <div style="font-size:32px;margin-bottom:8px;">📱</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px;">Pedido entra</div>
+        <div class="sub" style="font-size:13px;">Canal de domicilios de Nutresa</div>
       </div>
-      <div style="font-size:18px;color:var(--border);">→</div>
-      <div class="card-celeste" style="flex:1.4;text-align:center;padding:20px 14px;">
-        <div style="font-size:26px;margin-bottom:6px;">⚡</div>
-        <div style="font-weight:800;font-size:13px;color:var(--celeste);margin-bottom:3px;">Picker orquesta</div>
-        <div class="sub" style="font-size:11px;">¿Rider propio disponible y cerca? ¿O más eficiente 3PL?</div>
+      <div style="font-size:20px;color:var(--border);">→</div>
+      <div class="card-celeste" style="flex:1.4;text-align:center;padding:22px 16px;">
+        <div style="font-size:32px;margin-bottom:8px;">⚡</div>
+        <div style="font-weight:800;font-size:15px;color:var(--celeste);margin-bottom:4px;">Picker orquesta</div>
+        <div class="sub" style="font-size:13px;">¿Rider propio disponible y cerca? ¿O más eficiente 3PL?</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="font-size:14px;color:var(--border);transform:rotate(-30deg);">→</div>
-        <div style="font-size:14px;color:var(--border);transform:rotate(30deg);">→</div>
+        <div style="font-size:16px;color:var(--border);transform:rotate(-30deg);">→</div>
+        <div style="font-size:16px;color:var(--border);transform:rotate(30deg);">→</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;flex:1;">
-        <div class="card-sm" style="text-align:center;padding:12px;">
-          <div style="font-size:16px;margin-bottom:2px;">🛵</div>
-          <div style="font-weight:700;font-size:11px;">Flota propia Nutresa</div>
-          <div style="font-size:10px;color:var(--sub);">Prioridad &lt;3km</div>
+        <div class="card-sm" style="text-align:center;padding:14px;">
+          <div style="font-size:20px;margin-bottom:4px;">🛵</div>
+          <div style="font-weight:700;font-size:13px;">Flota propia Nutresa</div>
+          <div style="font-size:12px;color:var(--sub);margin-top:2px;">Prioridad &lt;3km</div>
         </div>
-        <div class="card-sm" style="text-align:center;padding:12px;">
-          <div style="font-size:16px;margin-bottom:2px;">🚗</div>
-          <div style="font-weight:700;font-size:11px;">Rappi · Army · Cabify</div>
-          <div style="font-size:10px;color:var(--sub);">Overflow &gt;3km</div>
+        <div class="card-sm" style="text-align:center;padding:14px;">
+          <div style="font-size:20px;margin-bottom:4px;">🚗</div>
+          <div style="font-weight:700;font-size:13px;">Rappi · Army · Cabify</div>
+          <div style="font-size:12px;color:var(--sub);margin-top:2px;">Overflow &gt;3km</div>
         </div>
       </div>
-      <div style="font-size:18px;color:var(--border);">→</div>
-      <div class="card" style="flex:1;text-align:center;padding:20px 14px;">
-        <div style="font-size:26px;margin-bottom:6px;">✅</div>
-        <div style="font-weight:700;font-size:13px;margin-bottom:3px;">Entregado</div>
-        <div class="sub" style="font-size:11px;">Tracking bajo marca Nutresa</div>
+      <div style="font-size:20px;color:var(--border);">→</div>
+      <div class="card" style="flex:1;text-align:center;padding:22px 16px;">
+        <div style="font-size:32px;margin-bottom:8px;">✅</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px;">Entregado</div>
+        <div class="sub" style="font-size:13px;">Tracking bajo marca Nutresa</div>
       </div>
     </div>
     <div class="grid4 anim d4">
-      <div style="display:flex;gap:9px;align-items:flex-start;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
         <div class="step-num">1</div>
-        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Dashboard único · 101 locales</div><div class="sub" style="font-size:11px;">Todas las marcas en tiempo real.</div></div>
+        <div><div style="font-weight:700;font-size:14px;margin-bottom:3px;">Dashboard único · 101 locales</div><div class="sub" style="font-size:12px;">Todas las marcas en tiempo real.</div></div>
       </div>
-      <div style="display:flex;gap:9px;align-items:flex-start;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
         <div class="step-num">2</div>
-        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">App + tracking brandeados</div><div class="sub" style="font-size:11px;">WhatsApp y mapa con tu marca.</div></div>
+        <div><div style="font-weight:700;font-size:14px;margin-bottom:3px;">App + tracking brandeados</div><div class="sub" style="font-size:12px;">WhatsApp y mapa con tu marca.</div></div>
       </div>
-      <div style="display:flex;gap:9px;align-items:flex-start;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
         <div class="step-num">3</div>
-        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Flota compartida multi-marca</div><div class="sub" style="font-size:11px;">PJ + El Corral · batching 3 envíos.</div></div>
+        <div><div style="font-weight:700;font-size:14px;margin-bottom:3px;">Flota compartida multi-marca</div><div class="sub" style="font-size:12px;">PJ + El Corral · batching 3 envíos.</div></div>
       </div>
-      <div style="display:flex;gap:9px;align-items:flex-start;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
         <div class="step-num">4</div>
-        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Cash routing automático</div><div class="sub" style="font-size:11px;">Efectivo → flota propia o Army.</div></div>
+        <div><div style="font-weight:700;font-size:14px;margin-bottom:3px;">Cash routing automático</div><div class="sub" style="font-size:12px;">Efectivo → flota propia o Army.</div></div>
       </div>
     </div>
   </div>
@@ -325,28 +328,28 @@
     </div>
     <div class="grid2 anim d3" style="gap:16px;">
       <div class="card" style="border-left:3px solid var(--green);padding:22px 26px;">
-        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Proveedores &amp; tarifas</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div class="step-num" style="background:var(--green-dim);border-color:var(--green-mid);color:var(--green-text);">1</div><div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Proveedores &amp; tarifas</div></div>
         <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">5 proveedores activos en Colombia</div>
         <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">Rappi · Cabify · Mensajeros Urbanos · Peebox · ARMI</div>
         <div style="padding:10px 14px;background:var(--green-dim);border-radius:10px;border:1px solid var(--green-mid);font-size:13px;color:var(--green-text);font-weight:700;">Integración API en ~1 semana · Tarifas transparentes en el último slide.</div>
       </div>
       <div class="card" style="border-left:3px solid var(--green);padding:22px 26px;">
-        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Operación multi-marca</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div class="step-num" style="background:var(--green-dim);border-color:var(--green-mid);color:var(--green-text);">2</div><div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Operación multi-marca</div></div>
         <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">Un rider = Papa Johns + El Corral</div>
         <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">Batching hasta 3 pedidos · asignación automática por proximidad</div>
         <div style="padding:12px 16px;background:var(--green-dim);border-radius:10px;border:1px solid var(--green-mid);font-size:13px;color:var(--green-text);font-weight:700;">Si un rider lo toma → el sistema cancela el resto. Sin doble asignación.</div>
       </div>
       <div class="card" style="border-left:3px solid var(--celeste);padding:22px 26px;">
-        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Efectivo &amp; integración</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div class="step-num">3</div><div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Efectivo &amp; integración</div></div>
         <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">Cash siempre a flota propia o Army</div>
         <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">Pago inmediato en punto de entrega · sin semanas de espera</div>
         <div style="padding:12px 16px;background:var(--celeste-dim);border-radius:10px;border:1px solid var(--celeste-mid);font-size:13px;color:var(--celeste);font-weight:700;">SIESA + ALOHA: integración API en ~1 semana · sandbox disponible</div>
       </div>
       <div class="card" style="border-left:3px solid var(--celeste);padding:22px 26px;">
-        <div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Visibilidad &amp; marca</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div class="step-num">4</div><div style="font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Visibilidad &amp; datos propios</div></div>
         <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px;">App + tracking 100% con tu marca</div>
         <div style="font-size:14px;color:var(--sub);margin-bottom:14px;">WhatsApp · mapa en vivo · bajo nombre Papa Johns / El Corral</div>
-        <div style="padding:12px 16px;background:var(--celeste-dim);border-radius:10px;border:1px solid var(--celeste-mid);font-size:13px;color:var(--celeste);font-weight:700;">API disponible para conectar al BI interno de Nutresa</div>
+        <div style="padding:12px 16px;background:var(--celeste-dim);border-radius:10px;border:1px solid var(--celeste-mid);font-size:13px;color:var(--celeste);font-weight:700;">API para conectar datos de domicilios con tus herramientas de análisis propias (BI / reportería)</div>
       </div>
     </div>
   </div>
@@ -365,18 +368,28 @@
         <div style="display:flex;gap:28px;margin-bottom:16px;">
           <div><div class="mega hlr">$21,103</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">COP / envío</div></div>
           <div style="width:1px;background:var(--border);"></div>
-          <div><div class="mega hlr">42.9%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">margen neto</div></div>
+          <div><div class="mega hlr">42.9%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">% ganancia sobre ventas</div></div>
         </div>
-        <div style="font-size:13px;color:var(--sub);">170 riders a nómina — solo <strong style="color:var(--red);">8 envíos/día por rider</strong> · asignación 100% manual</div>
+        <div style="font-size:13px;color:var(--sub);">170 riders a nómina · asignación 100% manual</div>
+        <div style="margin-top:8px;display:flex;align-items:center;gap:6px;">
+          <span style="font-size:26px;font-weight:900;color:var(--red);line-height:1;">8</span>
+          <div style="font-size:13px;font-weight:800;color:var(--red);">envíos/día por rider &nbsp;<span style="font-size:11px;background:var(--red-bg);padding:2px 7px;border-radius:4px;">BAJA eficiencia</span></div>
+        </div>
       </div>
       <div class="cmp-good">
         <div class="cmp-lbl hlg">Con Picker — escenario 75%</div>
         <div style="display:flex;gap:28px;margin-bottom:16px;">
           <div><div class="mega hlg">$16,225</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">COP / envío</div></div>
           <div style="width:1px;background:var(--green-mid);"></div>
-          <div><div class="mega hlg">49.2%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">margen neto</div></div>
+          <div><div class="mega hlg">49.2%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">% ganancia sobre ventas</div></div>
         </div>
-        <div style="font-size:13px;color:var(--sub);">170 → <strong style="color:var(--green-text);">~88 riders</strong> · <strong style="color:var(--green-text);">15 envíos/día</strong> · asignación automática</div>
+        <div style="margin-top:4px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;">
+          <span style="font-size:13px;color:var(--sub);">170 →</span>
+          <span style="font-size:22px;font-weight:900;color:var(--green-text);">~88 riders</span>
+          <span style="font-size:13px;color:var(--sub);">·</span>
+          <span style="font-size:22px;font-weight:900;color:var(--green-text);">15 envíos/día</span>
+          <span style="font-size:13px;color:var(--sub);">· asignación automática</span>
+        </div>
       </div>
     </div>
     <div class="grid2 anim d4" style="gap:14px;">
@@ -385,7 +398,7 @@
         <div style="font-size:10px;color:var(--muted);margin-bottom:8px;">El otro 50% sigue con flota propia directa</div>
         <div style="font-size:10px;font-weight:800;color:var(--green-text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">AHORRO MENSUAL</div>
         <div class="mega hlg">+$104.9M</div>
-        <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP / mes · <strong>$1,258M / año</strong></div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP / mes</div>
         <div style="font-size:14px;font-weight:800;color:var(--green-text);margin-top:8px;">ROI 2.2×</div>
       </div>
       <div style="text-align:center;padding:20px 24px;background:white;border-radius:16px;border:2px solid var(--green-mid);box-shadow:0 4px 20px hsl(162 100% 36% / .12);">
@@ -393,7 +406,7 @@
         <div style="font-size:10px;color:var(--muted);margin-bottom:8px;">El 25% restante sigue con flota propia directa</div>
         <div style="font-size:10px;font-weight:800;color:var(--green-text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">AHORRO MENSUAL</div>
         <div class="mega hlg">+$165.8M</div>
-        <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP / mes · <strong>$1,989M / año</strong></div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">COP / mes</div>
         <div style="font-size:14px;font-weight:800;color:var(--green-text);margin-top:8px;">ROI 3.5×</div>
       </div>
     </div>
@@ -413,25 +426,25 @@
         <div style="display:flex;gap:28px;margin-bottom:16px;">
           <div><div class="mega hlr">90 min</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">tiempo promesa fin de semana</div></div>
           <div style="width:1px;background:var(--border);"></div>
-          <div><div class="mega hlr">70%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">clientes tarde no vuelven</div></div>
+          <div><div class="mega hlr">70%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">de entregas fuera del tiempo promesa — el cliente no vuelve a pedir</div></div>
         </div>
         <div style="font-size:13px;color:var(--sub);">Sin visibilidad en tiempo real · call center reactivo</div>
       </div>
       <div class="cmp-good">
         <div class="cmp-lbl hlg">Con Picker</div>
         <div style="display:flex;gap:28px;margin-bottom:16px;">
-          <div><div class="mega hlg">43 min</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">promedio Colombia</div></div>
+          <div><div class="mega hlg">43 min</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">promedio PICKER · Colombia</div></div>
           <div style="width:1px;background:var(--green-mid);"></div>
-          <div><div class="mega hlg">+25%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">recurrencia estimada</div></div>
+          <div><div class="mega hlg">+25%</div><div style="font-size:12px;color:var(--sub);margin-top:4px;">incremento estimado en recurrencia de compra</div></div>
         </div>
         <div style="font-size:13px;color:var(--sub);">Rider asignado en el momento exacto que el local termina de preparar</div>
       </div>
     </div>
     <div class="grid2 anim d4" style="gap:14px;">
       <div style="text-align:center;padding:20px 24px;background:white;border-radius:16px;border:1px solid var(--green-mid);box-shadow:0 3px 16px hsl(162 100% 36% / .08);">
-        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Pedidos adicionales / mes</div>
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Pedidos adicionales estimados / mes</div>
         <div class="mega hlg">+8,500</div>
-        <div style="font-size:13px;color:var(--sub);margin-top:6px;">hipótesis conservadora +25% recurrencia</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:6px;">del +25% de recurrencia de compra sobre los 34,000 pedidos base</div>
       </div>
       <div style="text-align:center;padding:20px 24px;background:white;border-radius:16px;border:2px solid var(--green-mid);box-shadow:0 4px 20px hsl(162 100% 36% / .12);">
         <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Ingreso adicional / mes</div>
@@ -447,26 +460,25 @@
   <div class="content" style="display:flex;flex-direction:column;gap:22px;">
     <div>
       <div class="tag blue anim d1">Pilar 3 · Expansión</div>
-      <h2 class="anim d2">Abrir nuevos locales<br/><span class="hl">sin invertir en flota</span> desde el día 1.</h2>
+      <h2 class="anim d2">Abrir nuevos locales<br/><span class="hl">sin invertir en flota propia</span> desde el día 1.</h2>
     </div>
     <div class="cmp anim d3">
       <div class="cmp-bad">
         <div class="cmp-lbl hlr">Sin Picker — hoy</div>
-        <div style="margin-bottom:14px;"><div class="mega-md hlr">Nuevo local</div><div style="font-size:15px;font-weight:700;color:var(--red);margin-top:4px;">= inversión previa en riders fijos</div></div>
+        <div style="margin-bottom:14px;"><div class="mega-md hlr">Nuevo local</div><div style="font-size:15px;font-weight:700;color:var(--red);margin-top:4px;">= inversión previa en riders fijos</div><div style="font-size:13px;font-weight:800;color:var(--red);margin-top:4px;">$3,500,000 COP / rider fijo / mes</div></div>
         <div style="font-size:13px;color:var(--sub);">Locales sin activar en domicilios · costo fijo antes de tener un solo pedido</div>
         <div style="margin-top:12px;font-size:13px;color:var(--sub);">Papa Johns y El Corral con flotas separadas · riders ociosos en horas bajas</div>
       </div>
       <div class="cmp-good">
         <div class="cmp-lbl hlg">Con Picker</div>
         <div style="margin-bottom:14px;"><div class="mega-md hlg">Prendes el local.</div><div style="font-size:15px;font-weight:700;color:var(--green-text);margin-top:4px;">Picker lo cubre desde el día 1 con 3PL.</div></div>
-        <div style="font-size:13px;color:var(--sub);">Si funciona → agregas riders propios · si no → apagas sin penalización</div>
-        <div style="margin-top:12px;font-size:13px;font-weight:700;color:var(--green-text);">7 marcas · 1 sola flota compartida — "Domiciliarios Nutresa"</div>
+        <div style="margin-top:8px;font-size:13px;font-weight:700;color:var(--green-text);">7 marcas · 1 sola flota compartida — "Domiciliarios Nutresa"</div>
       </div>
     </div>
     <div class="grid3 anim d4" style="gap:14px;">
       <div style="text-align:center;padding:18px;background:white;border-radius:16px;border:1px solid var(--celeste-mid);box-shadow:0 3px 16px hsl(193 100% 45% / .07);">
         <div class="mega-md hl">+10</div>
-        <div style="font-size:12px;color:var(--sub);margin-top:6px;">locales activables sin flota previa</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px;">locales · escenario ejemplo de crecimiento</div>
       </div>
       <div style="text-align:center;padding:18px;background:white;border-radius:16px;border:1px solid var(--green-mid);box-shadow:0 3px 16px hsl(162 100% 36% / .07);">
         <div class="mega-md hlg">+5,000</div>
@@ -488,27 +500,28 @@
       <h2>Todo esto por <span class="hlg">$1,400 / envío</span><br/><span style="font-size:clamp(18px,2.2vw,28px);font-weight:600;color:var(--sub);">+ tarifas de proveedores 3PL</span></h2>
     </div>
     <div class="grid3 anim d2" style="max-width:900px;gap:18px;">
-      <div class="card" style="border-top:4px solid var(--celeste);text-align:center;padding:28px 20px;">
+      <div class="card" style="border-top:4px solid var(--green);border-bottom:3px solid var(--green-mid);text-align:center;padding:28px 20px;box-shadow:0 6px 24px hsl(162 100% 36% / .12);">
         <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;">Ahorro Operativo</div>
         <div class="mega hlg">+$165.8M</div>
         <div style="font-size:13px;color:var(--sub);margin-top:8px;">COP / mes</div>
         <div style="margin-top:14px;" class="pill">ROI 3.5×</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--green-text);font-weight:700;">↓ ver impacto anual</div>
       </div>
       <div class="card" style="border-top:4px solid var(--celeste);text-align:center;padding:28px 20px;">
         <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;">Ingreso por Recurrencia</div>
         <div class="mega hlg">+$663M</div>
-        <div style="font-size:13px;color:var(--sub);margin-top:8px;">COP / mes potencial</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:8px;">posible ingreso adicional por +25% de recurrencia</div>
         <div style="margin-top:14px;" class="pill">$0 adquisición</div>
       </div>
       <div class="card" style="border-top:4px solid var(--celeste);text-align:center;padding:28px 20px;">
         <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;">Expansión · 7 marcas</div>
         <div class="mega hlg">+5,000</div>
-        <div style="font-size:13px;color:var(--sub);margin-top:8px;">pedidos / mes sin flota previa</div>
-        <div style="margin-top:14px;" class="pill">+10 locales</div>
+        <div style="font-size:13px;color:var(--sub);margin-top:8px;">pedidos / mes · ejemplo de +10 locales adicionales sin flota previa</div>
+        <div style="margin-top:14px;" class="pill">escenario de crecimiento</div>
       </div>
     </div>
-    <div class="anim d3" style="padding:18px 36px;background:var(--green-dim);border:1px solid var(--green-mid);border-radius:14px;max-width:720px;text-align:center;">
-      <div style="font-size:12px;font-weight:700;color:var(--green-text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Solo con el Pilar 1 · escenario 75% Picker</div>
+    <div class="anim d3" style="padding:18px 36px;background:var(--green-dim);border:2px solid var(--green-mid);border-radius:14px;max-width:720px;text-align:center;border-top:4px solid var(--green);">
+      <div style="font-size:12px;font-weight:700;color:var(--green-text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">↑ Ahorro Operativo · Pilar 1 · escenario 75% Picker</div>
       <div style="font-size:13px;color:var(--green-text);font-weight:600;margin-bottom:6px;">$165.8M / mes &nbsp;×&nbsp; 12 meses =</div>
       <div style="font-size:clamp(22px,2.8vw,36px);font-weight:900;color:var(--green-text);">+$1,989M COP / año &nbsp;·&nbsp; ROI 3.5×</div>
     </div>
@@ -517,154 +530,155 @@
 
 <!-- ══════ S10 · PRÓXIMOS PASOS ══════ -->
 <div class="slide" id="s10">
-  <div class="content" style="display:flex;flex-direction:column;gap:24px;">
+  <div class="content" style="display:flex;flex-direction:column;gap:14px;">
     <div>
       <div class="tag blue anim d1">Próximos pasos</div>
-      <h2 class="anim d2">Piloto en 2 locales.<br/><span class="hlg">Resultados en 2–3 semanas.</span></h2>
-      <p class="sub anim d3" style="margin-top:8px;max-width:540px;">1 Papa Johns + 1 El Corral · Sin compromiso de volumen · Arranca manual si IT no está listo.</p>
+      <h2 class="anim d2" style="font-size:clamp(22px,2.6vw,36px);">Piloto en 2 locales. <span class="hlg">Resultados en 2–3 semanas.</span></h2>
+      <p class="sub anim d3" style="margin-top:4px;font-size:13px;">1 Papa Johns + 1 El Corral · Sin compromiso de volumen · Arranca manual si IT no está listo.</p>
     </div>
-    <div class="grid2 anim d4" style="gap:18px;align-items:start;">
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
-          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">1</div>
-          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Setup del piloto</div><div class="sub" style="font-size:12px;">Picker conecta 2 locales · configuración de reglas · riders en app.</div></div>
+    <!-- Top: tarifario izquierda | propuesta comercial derecha -->
+    <div class="grid2 anim d4" style="gap:14px;align-items:start;">
+      <!-- Tarifario -->
+      <div class="card" style="padding:14px 16px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--celeste);letter-spacing:.08em;">Tarifario carriers · Colombia</div>
+          <div style="font-size:9px;color:var(--muted);font-weight:600;">COP / envío · moto</div>
         </div>
-        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
-          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">2</div>
-          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Entrenamiento — 1 día</div><div class="sub" style="font-size:12px;">Repartidores y coordinadores de los 2 locales piloto.</div></div>
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);">
+              <th style="text-align:left;padding:3px 6px 5px 0;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Dist.</th>
+              <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">Rappi</th>
+              <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">Cabify</th>
+              <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">MU</th>
+              <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--green-text);">Pibox</th>
+              <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">ARMI A</th>
+              <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">ARMI B</th>
+              <th style="text-align:right;padding:3px 0 5px 3px;font-size:8px;font-weight:800;color:var(--text);">ARMI C</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:3px 6px 3px 0;font-size:9px;font-weight:700;color:var(--sub);">0–3km</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">8.199</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">8.200</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">10.890</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--green-text);">6.200</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">9.600</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">12.200</td>
+              <td style="text-align:right;padding:3px 0 3px 3px;font-size:10px;font-weight:700;color:var(--text);">11.850</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:3px 6px 3px 0;font-size:9px;font-weight:700;color:var(--sub);">4km</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">10.445</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">9.975</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">13.134</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--green-text);">7.770</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">11.498</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">15.299</td>
+              <td style="text-align:right;padding:3px 0 3px 3px;font-size:10px;font-weight:700;color:var(--text);">15.225</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:3px 6px 3px 0;font-size:9px;font-weight:700;color:var(--sub);">5km</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">12.282</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">11.340</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">14.834</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--green-text);">9.030</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">12.915</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">17.787</td>
+              <td style="text-align:right;padding:3px 0 3px 3px;font-size:10px;font-weight:700;color:var(--text);">18.008</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:3px 6px 3px 0;font-size:9px;font-weight:700;color:var(--sub);">6km</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">14.118</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">12.705</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">16.534</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--green-text);">10.290</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">14.333</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">20.276</td>
+              <td style="text-align:right;padding:3px 0 3px 3px;font-size:10px;font-weight:700;color:var(--text);">20.790</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:3px 6px 3px 0;font-size:9px;font-weight:700;color:var(--sub);">7km</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">15.955</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">14.070</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">18.234</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--green-text);">11.550</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">15.750</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:700;color:var(--text);">22.764</td>
+              <td style="text-align:right;padding:3px 0 3px 3px;font-size:10px;font-weight:700;color:var(--text);">23.573</td>
+            </tr>
+            <tr>
+              <td style="padding:3px 6px 3px 0;font-size:9px;font-weight:700;color:var(--sub);">Km+</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:600;color:var(--muted);">1.836</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:600;color:var(--muted);">1.365</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:600;color:var(--muted);">1.700</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:600;color:var(--muted);">1.260</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:600;color:var(--muted);">1.418</td>
+              <td style="text-align:right;padding:3px;font-size:10px;font-weight:600;color:var(--muted);">2.489</td>
+              <td style="text-align:right;padding:3px 0 3px 3px;font-size:10px;font-weight:600;color:var(--muted);">2.783</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px;padding:7px 10px;background:var(--celeste-dim);border:1px solid var(--celeste-mid);border-radius:7px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:10px;color:var(--celeste);font-weight:700;">+ Fee Picker (orquestador)</span>
+          <span style="font-size:13px;font-weight:900;color:var(--celeste);">$1,400 COP / envío</span>
         </div>
-        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
-          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">3</div>
-          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Piloto en vivo — 2–3 semanas</div><div class="sub" style="font-size:12px;">Picker mide costo/envío, SLA y eficiencia de flota.</div></div>
+        <div style="margin-top:5px;padding:5px 8px;background:var(--card2);border-radius:6px;font-size:8px;color:var(--sub);line-height:1.5;">
+          <strong style="color:var(--text);">Zonas ARMI:</strong> &nbsp;
+          <strong>A</strong> = Bogotá, Cali, Pereira &nbsp;|&nbsp;
+          <strong>B</strong> = Medellín, Soacha, Cartagena &nbsp;|&nbsp;
+          <strong>C</strong> = Armenia, Manizales, Rionegro
         </div>
-        <div class="card-sm" style="display:flex;gap:12px;align-items:flex-start;">
-          <div class="step-num" style="width:28px;height:28px;min-width:28px;font-size:12px;">4</div>
-          <div><div style="font-weight:700;font-size:14px;margin-bottom:2px;">Revisión con equipo Nutresa</div><div class="sub" style="font-size:12px;">Validar modelo vs. realidad → despliegue a 101 locales.</div></div>
+        <div style="margin-top:4px;padding:4px 8px;background:var(--green-dim);border:1px solid var(--green-mid);border-radius:6px;font-size:8.5px;color:var(--green-text);font-weight:700;">
+          ✓ Precio plano — sin surcharges por lluvia, festivos ni pico
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div class="card" style="padding:16px 18px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-            <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--celeste);letter-spacing:.08em;">Tarifario carriers · Colombia</div>
-            <div style="font-size:9px;color:var(--muted);font-weight:600;">COP / envío · moto</div>
+      <!-- Propuesta comercial -->
+      <div class="card-accent" style="padding:16px 18px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--green-text);font-weight:800;margin-bottom:12px;">Propuesta comercial</div>
+        <div style="display:flex;gap:10px;margin-bottom:10px;">
+          <div style="flex:1;text-align:center;padding:10px;background:white;border-radius:10px;border:1px solid var(--green-mid);">
+            <div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Fee por envío</div>
+            <div style="font-size:clamp(22px,2.4vw,32px);font-weight:900;color:var(--green-text);line-height:1;">$1,400</div>
+            <div style="font-size:11px;color:var(--sub);margin-top:3px;">COP · igual festivos y picos</div>
           </div>
-          <table style="width:100%;border-collapse:collapse;">
-            <thead>
-              <tr style="border-bottom:2px solid var(--border);">
-                <th style="text-align:left;padding:3px 6px 5px 0;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Dist.</th>
-                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">Rappi</th>
-                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">Cabify</th>
-                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">MU</th>
-                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--green-text);">Pibox</th>
-                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">ARMI A</th>
-                <th style="text-align:right;padding:3px 3px 5px;font-size:8px;font-weight:800;color:var(--text);">ARMI B</th>
-                <th style="text-align:right;padding:3px 0 5px 3px;font-size:8px;font-weight:800;color:var(--text);">ARMI C</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">0–3km</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">8.199</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">8.200</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">10.890</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">6.200</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">9.600</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.200</td>
-                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">11.850</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">4km</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">10.445</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">9.975</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">13.134</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">7.770</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">11.498</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.299</td>
-                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.225</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">5km</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.282</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">11.340</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.834</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">9.030</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.915</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">17.787</td>
-                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">18.008</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">6km</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.118</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">12.705</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">16.534</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">10.290</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.333</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">20.276</td>
-                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">20.790</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border);">
-                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">7km</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.955</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">14.070</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">18.234</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--green-text);">11.550</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">15.750</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:700;color:var(--text);">22.764</td>
-                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:700;color:var(--text);">23.573</td>
-              </tr>
-              <tr>
-                <td style="padding:4px 6px 4px 0;font-size:9px;font-weight:700;color:var(--sub);">Km+</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.836</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.365</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.700</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.260</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">1.418</td>
-                <td style="text-align:right;padding:4px 3px;font-size:10px;font-weight:600;color:var(--muted);">2.489</td>
-                <td style="text-align:right;padding:4px 0 4px 3px;font-size:10px;font-weight:600;color:var(--muted);">2.783</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="margin-top:10px;padding:8px 12px;background:var(--celeste-dim);border:1px solid var(--celeste-mid);border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:10px;color:var(--celeste);font-weight:700;">+ Fee Picker (orquestador)</span>
-            <span style="font-size:14px;font-weight:900;color:var(--celeste);">$1,400 COP / envío</span>
-          </div>
-          <div style="margin-top:6px;padding:6px 10px;background:var(--card2);border-radius:7px;font-size:8.5px;color:var(--sub);line-height:1.55;">
-            <strong style="color:var(--text);">Zonas ARMI:</strong> &nbsp;
-            <strong>A</strong> = Bogotá, Cali, Pereira + otras ciudades &nbsp;|&nbsp;
-            <strong>B</strong> = Medellín, Envigado, Itagüí, Sabaneta, Soacha, Chía, Cajicá, Cartagena &nbsp;|&nbsp;
-            <strong>C</strong> = Rionegro, Armenia, Cota, La Calera, Manizales
-          </div>
-          <div style="margin-top:5px;padding:5px 10px;background:var(--green-dim);border:1px solid var(--green-mid);border-radius:7px;font-size:8.5px;color:var(--green-text);font-weight:700;">
-            ✓ Precio plano garantizado — sin surcharges por lluvia, festivos, hora pico ni alta demanda
+          <div style="flex:1;text-align:center;padding:10px;background:white;border-radius:10px;border:1px solid var(--green-mid);">
+            <div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Fee mensual / local</div>
+            <div style="font-size:16px;font-weight:900;text-decoration:line-through;color:var(--muted);line-height:1.2;">$200,000</div>
+            <div style="font-size:14px;font-weight:800;color:var(--green-text);margin-top:2px;">✓ $0 eliminado</div>
           </div>
         </div>
-        <div class="card-accent" style="padding:22px 24px;">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--green-text);font-weight:800;margin-bottom:14px;">Propuesta comercial</div>
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-            <div style="flex:1;text-align:center;padding:14px;background:white;border-radius:12px;border:1px solid var(--green-mid);">
-              <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Fee por envío</div>
-              <div class="mega-md hlg">$1,400</div>
-              <div style="font-size:12px;color:var(--sub);margin-top:4px;">COP · igual festivos y picos</div>
-            </div>
-            <div style="flex:1;text-align:center;padding:14px;background:white;border-radius:12px;border:1px solid var(--green-mid);">
-              <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Fee mensual / local</div>
-              <div style="font-size:20px;font-weight:900;text-decoration:line-through;color:var(--muted);">$200,000</div>
-              <div style="font-size:15px;font-weight:800;color:var(--green-text);margin-top:2px;">✓ $0 — eliminado</div>
-            </div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="padding:7px 10px;background:white;border-radius:8px;border:1px solid var(--green-mid);font-size:11px;color:var(--text);">
+            <strong>Flota propia:</strong> <span style="color:var(--green-text);font-weight:800;">solo $1,400 COP</span> · sin tarifa de carrier
           </div>
-          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px;">
-            <div style="padding:8px 12px;background:white;border-radius:9px;border:1px solid var(--green-mid);font-size:11px;color:var(--text);">
-              <strong>Flota propia:</strong> <span style="color:var(--green-text);font-weight:800;">solo $1,400 COP</span> · sin tarifa de carrier — Picker orquesta tus riders.
-            </div>
-            <div style="padding:8px 12px;background:white;border-radius:9px;border:1px solid var(--green-mid);font-size:11px;color:var(--text);">
-              <strong>Efectivo:</strong> comisión <span style="color:var(--amber);font-weight:800;">3.5%</span> sobre ticket de la orden · si se orquesta a flota propia: <strong>$0 comisión</strong>.
-            </div>
-            <div style="padding:8px 12px;background:white;border-radius:9px;border:1px solid var(--celeste-mid);font-size:11px;color:var(--text);">
-              <strong>¿Ya tienes tarifa negociada con ARMI?</strong> Picker orquesta con tus credenciales propias — conservas tu precio. Las incidencias y pagos con ARMI los manejas directamente con ellos.
-            </div>
+          <div style="padding:7px 10px;background:white;border-radius:8px;border:1px solid var(--green-mid);font-size:11px;color:var(--text);">
+            <strong>Efectivo:</strong> <span style="color:var(--amber);font-weight:800;">3.5% comisión</span> · orquestado a flota propia: <strong>$0</strong>
           </div>
-          <div style="font-size:13px;font-weight:600;color:var(--text);padding:10px 14px;background:white;border-radius:10px;border:1px solid var(--green-mid);">→ Piloto <strong>2–3 semanas</strong> · solo 2 locales · sin compromiso de volumen</div>
+          <div style="padding:7px 10px;background:white;border-radius:8px;border:1px solid var(--celeste-mid);font-size:11px;color:var(--text);">
+            <strong>Credenciales ARMI propias:</strong> conservas tu tarifa · incidencias y pagos directamente con ellos
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- Bottom: 4 pasos horizontales -->
+    <div class="grid4 anim d5" style="gap:10px;">
+      <div class="card-sm" style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;">
+        <div class="step-num" style="width:26px;height:26px;min-width:26px;font-size:11px;">1</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Setup del piloto</div><div class="sub" style="font-size:11px;">2 locales · reglas · riders en app</div></div>
+      </div>
+      <div class="card-sm" style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;">
+        <div class="step-num" style="width:26px;height:26px;min-width:26px;font-size:11px;">2</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Entrenamiento — 1 día</div><div class="sub" style="font-size:11px;">Repartidores y coordinadores</div></div>
+      </div>
+      <div class="card-sm" style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;">
+        <div class="step-num" style="width:26px;height:26px;min-width:26px;font-size:11px;">3</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Piloto en vivo — 2–3 semanas</div><div class="sub" style="font-size:11px;">Picker mide costo, SLA y flota</div></div>
+      </div>
+      <div class="card-sm" style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;">
+        <div class="step-num" style="width:26px;height:26px;min-width:26px;font-size:11px;">4</div>
+        <div><div style="font-weight:700;font-size:12px;margin-bottom:2px;">Revisión con Nutresa</div><div class="sub" style="font-size:11px;">Resultados → despliegue a 101 locales</div></div>
       </div>
     </div>
   </div>
